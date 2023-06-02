@@ -19,6 +19,7 @@ COPY --from=builder /build/dbPayments.json.example dbPayments.json
 COPY --from=builder /build/dbQueue.json.example dbQueue.json
 COPY --from=builder /build/dbSchedule.json.example dbSchedule.json
 COPY --from=builder /build/dbUsers.json.example dbUsers.json
+COPY --from=builder /build/dbNSFWChannels.json.example dbNSFWChannels.json
 
 VOLUME "/InvokeAI/outputs"
 
