@@ -16,6 +16,8 @@ COPY --from=builder /build/node_modules/ ./node_modules
 COPY --from=builder /build/txt/ ./txt
 COPY --from=builder /build/index.js ./
 COPY --from=builder /build/config.example/ ./config
+RUN echo -n "{}" >./config/dbNSFWChannels.json
+RUN echo -n "{}" >./config/dbGalleryChannels.json
 
 VOLUME "/InvokeAI/outputs"
 
