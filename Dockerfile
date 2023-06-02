@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM node:18-bullseye AS builder
+ENV NO_COLOR=true
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends git && apt-get clean
 WORKDIR /build
 RUN git clone --separate-git-dir=$(mktemp -u) --depth 1 https://github.com/ausbitbank/stable-diffusion-discord-bot .
