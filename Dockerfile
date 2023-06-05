@@ -1,11 +1,10 @@
 # syntax=docker/dockerfile:1
 FROM node:18-bullseye AS builder
-ENV NO_COLOR=1
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends git && apt-get clean
 WORKDIR /build
-RUN git clone --separate-git-dir=$(mktemp -u) --depth 1 https://github.com/ausbitbank/stable-diffusion-discord-bot .
+RUN GIT_NO_COLOR=1 git clone --separate-git-dir=$(mktemp -u) --depth 1 https://github.com/ausbitbank/stable-diffusion-discord-bot .
 # Build dependencies
-RUN npm install --omit=dev
+RUN NO_COLOR=1 npm install --omit=dev
 
 FROM node:18-bullseye
 # Create app directory
